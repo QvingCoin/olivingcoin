@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+#
+#  olivingcoind The olivingcoin core server.
+#
+#
+# chkconfig: 345 80 20
+# description: olivingcoind
+# processname: olivingcoind
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/olivingcoind, see below
+if [ -f /etc/sysconfig/olivingcoind ]; then
+        . /etc/sysconfig/olivingcoind
+fi
+
+RETVAL=0
+
+prog=olivingcoind
+# you can override the lockfile via OLIVINGCOIND_LOCKFILE in /etc/sysconfig/olivingcoind
+lockfile=${OLIVINGCOIND_LOCKFILE-/var/lock/subsys/olivingcoind}
+
+# olivingcoind defaults to /usr/bin/olivingcoind, override with OLIVINGCOIND_BIN
+olivingcoind=${OLIVINGCOIND_BIN-/usr/bin/olivingcoind}
+
+# olivingcoind opts default to -disablewallet, override with OLIVINGCOIND_OPTS
+olivingcoind_opts=${OLIVINGCOIND_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $olivingcoind $olivingcoind_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

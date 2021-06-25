@@ -1,0 +1,33 @@
+# /etc/conf.d/olivingcoind: config file for /etc/init.d/olivingcoind
+
+# Config file location
+#OLIVINGCOIND_CONFIGFILE="/etc/olivingcoin/olivingcoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $OLIVINGCOIND_USER)
+#OLIVINGCOIND_PIDDIR="/var/run/olivingcoind"
+
+# What filename to give the pidfile
+#OLIVINGCOIND_PIDFILE="${OLIVINGCOIND_PIDDIR}/olivingcoind.pid"
+
+# Where to write olivingcoind data (be mindful that the blockchain is large)
+#OLIVINGCOIND_DATADIR="/var/lib/olivingcoind"
+
+# User and group to own olivingcoind process
+#OLIVINGCOIND_USER="olivingcoin"
+#OLIVINGCOIND_GROUP="olivingcoin"
+
+# Path to olivingcoind executable
+#OLIVINGCOIND_BIN="/usr/bin/olivingcoind"
+
+# Nice value to run olivingcoind under
+#OLIVINGCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#OLIVINGCOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for olivingcoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+OLIVINGCOIND_SIGTERM_TIMEOUT=60
