@@ -20,7 +20,7 @@ QList<OlivingcoinUnits::Unit> OlivingcoinUnits::availableUnits()
     unitlist.append(OLC);
     unitlist.append(mOLC);
     unitlist.append(uOLC);
-    unitlist.append(SAT);
+    unitlist.append(OTS);
     return unitlist;
 }
 
@@ -31,7 +31,7 @@ bool OlivingcoinUnits::valid(int unit)
     case OLC:
     case mOLC:
     case uOLC:
-    case SAT:
+    case OTS:
         return true;
     default:
         return false;
@@ -43,9 +43,9 @@ QString OlivingcoinUnits::longName(int unit)
     switch(unit)
     {
     case OLC: return QString("OLC");
-    case mOLC: return QString("lites");
-    case uOLC: return QString("photons");
-    case SAT: return QString("olitoshi");
+    case mOLC: return QString("olivis");
+    case uOLC: return QString("olis");
+    case OTS: return QString("olitoshi");
     default: return QString("???");
     }
 }
@@ -54,8 +54,8 @@ QString OlivingcoinUnits::shortName(int unit)
 {
     switch(unit)
     {
-    case uOLC: return QString::fromUtf8("bits");
-    case SAT: return QString("sat");
+    case uOLC: return QString::fromUtf8("olis");
+    case OTS: return QString("ots");
     default: return longName(unit);
     }
 }
@@ -65,9 +65,9 @@ QString OlivingcoinUnits::description(int unit)
     switch(unit)
     {
     case OLC: return QString("Olivingcoins");
-    case mOLC: return QString("Lites (1 / 1" THIN_SP_UTF8 "000)");
-    case uOLC: return QString("Photons (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-    case SAT: return QString("Oolitoshis (sat) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case mOLC: return QString("Olivis (1 / 1" THIN_SP_UTF8 "000)");
+    case uOLC: return QString("Olis (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case OTS: return QString("Olitoshis (ots) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
 }
@@ -79,7 +79,7 @@ qint64 OlivingcoinUnits::factor(int unit)
     case OLC: return 100000000;
     case mOLC: return 100000;
     case uOLC: return 100;
-    case SAT: return 1;
+    case OTS: return 1;
     default: return 100000000;
     }
 }
@@ -91,7 +91,7 @@ int OlivingcoinUnits::decimals(int unit)
     case OLC: return 8;
     case mOLC: return 5;
     case uOLC: return 2;
-    case SAT: return 0;
+    case OTS: return 0;
     default: return 0;
     }
 }

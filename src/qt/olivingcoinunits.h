@@ -59,7 +59,7 @@ public:
         OLC,
         mOLC,
         uOLC,
-        SAT
+        OTS
     };
 
     enum SeparatorStyle
