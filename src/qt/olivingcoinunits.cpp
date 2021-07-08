@@ -55,7 +55,7 @@ QString OlivingcoinUnits::shortName(int unit)
     switch(unit)
     {
     case uOVC: return QString::fromUtf8("Olis");
-    case SAT: return QString("ots");
+    case OTS: return QString("ots");
     default: return longName(unit);
     }
 }
