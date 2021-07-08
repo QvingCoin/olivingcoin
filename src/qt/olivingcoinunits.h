@@ -59,7 +59,7 @@ public:
         OVC,
         mOVC,
         uOVC,
-        SAT
+        OTS
     };
 
     enum SeparatorStyle

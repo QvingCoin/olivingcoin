@@ -20,7 +20,7 @@ QList<OlivingcoinUnits::Unit> OlivingcoinUnits::availableUnits()
     unitlist.append(OVC);
     unitlist.append(mOVC);
     unitlist.append(uOVC);
-    unitlist.append(SAT);
+    unitlist.append(OTS);
     return unitlist;
 }
 
@@ -31,7 +31,7 @@ bool OlivingcoinUnits::valid(int unit)
     case OVC:
     case mOVC:
     case uOVC:
-    case SAT:
+    case OTS:
         return true;
     default:
         return false;
@@ -45,7 +45,7 @@ QString OlivingcoinUnits::longName(int unit)
     case OVC: return QString("OVC");
     case mOVC: return QString("olivis");
     case uOVC: return QString("olis");
-    case SAT: return QString("olitoshi");
+    case OTS: return QString("olitoshi");
     default: return QString("???");
     }
 }
@@ -54,7 +54,7 @@ QString OlivingcoinUnits::shortName(int unit)
 {
     switch(unit)
     {
-    case uOVC: return QString::fromUtf8("bits");
+    case uOVC: return QString::fromUtf8("Olis");
     case SAT: return QString("ots");
     default: return longName(unit);
     }
@@ -65,9 +65,9 @@ QString OlivingcoinUnits::description(int unit)
     switch(unit)
     {
     case OVC: return QString("Olivingcoins");
-    case mOVC: return QString("Lites (1 / 1" THIN_SP_UTF8 "000)");
-    case uOVC: return QString("Photons (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-    case SAT: return QString("Oolitoshis (ots) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case mOVC: return QString("Olivis (1 / 1" THIN_SP_UTF8 "000)");
+    case uOVC: return QString("Olis (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case OTS: return QString("Olitoshis (OTS) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
 }
@@ -79,7 +79,7 @@ qint64 OlivingcoinUnits::factor(int unit)
     case OVC: return 100000000;
     case mOVC: return 100000;
     case uOVC: return 100;
-    case SAT: return 1;
+    case OTS: return 1;
     default: return 100000000;
     }
 }
@@ -91,7 +91,7 @@ int OlivingcoinUnits::decimals(int unit)
     case OVC: return 8;
     case mOVC: return 5;
     case uOVC: return 2;
-    case SAT: return 0;
+    case OTS: return 0;
     default: return 0;
     }
 }
